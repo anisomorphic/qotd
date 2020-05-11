@@ -1,7 +1,7 @@
 package qotd
 
 class QuoteController {
-
+    static scaffold = Quote
     static defaultAction = "home"
 
     def home() {
