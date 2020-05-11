@@ -2,6 +2,7 @@ package qotd
 
 class QuoteController {
     static scaffold = Quote
+    def quoteService
     static defaultAction = "home"
 
     def home() {
@@ -9,17 +10,8 @@ class QuoteController {
     }
 
     def random() {
-      def allQuotes = Quote.list()
-      def randomQuote
-      if (allQuotes.size() > 0) {
-        def randomIdx = new Random().nextInt(allQuotes.size())
-        randomQuote = allQuotes[randomIdx]
-      } else {
-        randomQuote = new Quote(author: "Anonymous",
-                      content: "Real Programmers Don't eat much Quiche")
-      }
-
-      [ quote: randomQuote ]
+      def randomQuote = quoteService.getRandomQuote()
+      [ quote : randomQuote ]
     }
 
 }
